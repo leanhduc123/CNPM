@@ -5,6 +5,28 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
       <title>Document</title>
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+
+      <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyBEUO-hl2KoLfCfYAUU2yvAV3hFDN4hz6k",
+          authDomain: "cnpm-a51f8.firebaseapp.com",
+          databaseURL: "https://cnpm-a51f8.firebaseio.com",
+          projectId: "cnpm-a51f8",
+          storageBucket: "cnpm-a51f8.appspot.com",
+          messagingSenderId: "190125142126",
+          appId: "1:190125142126:web:88510e7f7e8e92acbbf67f"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+      </script>
       <link rel="stylesheet" href="./main.css">
       <script src="./component.js"></script>
       <script src="./model.js"></script>
@@ -15,43 +37,6 @@
 
     <body>
         <div id='app'>   
-            <section class="register-container">
-                <form id = "register-form" class="register-form">
-                  <div class="form-header">
-                    <h3>We Talk</h3>
-                  </div>
-                  <div class="form-content">
-                    <div class="name-wrapper">
-                      <div class="input-wrapper">
-                        <input type="text" name="firstname" placeholder="Firstname">
-                        <div id="firstname-error" class="message-error"></div>
-                      </div>
-                      <div class="input-wrapper">
-                        <input type="text" name="lastname" placeholder="Lastname">
-                        <div id="lastname-error" class="message-error"></div>
-                      </div>
-                    </div>
-                    <div class="input-wrapper">
-                      <input type="email" name="email" placeholder="Email">
-                      <div id="email-error" class="message-error"></div>
-                    </div>
-                    <div class="input-wrapper">
-                      <input type="password" name="password" placeholder="Password">
-                      <div id="password-error" class="message-error"></div>
-                    </div>
-                    <div class="input-wrapper">
-                      <input type="password" name="confirmPassword" placeholder="Confirm password">
-                      <div id="confirmPassword-error" class="message-error"></div>
-                    </div>
-                  </div>
-                  <div id="register-error" class="message-error"></div>
-                  <div id="register-success" class="message-success"></div>
-                  <div class="form-footer">
-                    <a id="form-link" href="#">Already have an account? Login</a>
-                    <button id="register-btn" type="submit">Register</button>
-                  </div>
-                </form>
-            </section>
         </div>
     </body>
 </html>
