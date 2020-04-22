@@ -4,7 +4,7 @@ component.register = `
 <section class="register-container">
 <form id = "register-form" class="register-form">
   <div class="form-header">
-    <h3>Mindx chat</h3>
+    <h3>WibuChat</h3>
   </div>
   <div class="form-content">
     <div class="name-wrapper">
@@ -44,7 +44,7 @@ component.logIn = `
 <section class="login-container">
 <form id = "login-form" class="login-form">
   <div class="form-header">
-    <h3>Mindx chat</h3>
+    <h3>WibuChat</h3>
   </div>
   <div id="form-content" class="form-content">
     <div class="input-wrapper">

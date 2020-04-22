@@ -105,3 +105,11 @@ function allPassed(validateResult) {
     }
     return true
 }
+
+view.disable = function (id) {
+    document.getElementById(id).setAttribute("disabled", true)
+}
+
+view.enable = function (id) {
+    document.getElementById(id).removeAttribute("disabled")
+}
