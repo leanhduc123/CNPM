@@ -22,3 +22,20 @@ controller.register = async function(registerInfo){
     //enable button
     view.enable("register-btn")
 }
+
+controller.logIn = async function (logInInfo) {
+    let email = logInInfo.email
+    let password = logInInfo.password
+    view.setText("logIn-error", "")
+    view.setText("logIn-success", "")
+    view.disable("logIn-btn")
+    try {
+        let result = await firebase.auth().signInWithEmailAndPassword(email, password)
+        if (!result.user || !result.user.emailVerified) {
+            throw new Error("Must verify email!")
+        }
+    } catch (err) {
+        view.enable("logIn-btn")
+        view.setText("logIn-error", err.message)
+    }
+}
