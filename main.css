@@ -1,9 +1,15 @@
 * {
     padding: 0px;
     margin: 0px;
-    font-size: 13px;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
+    user-select: none;
+}
+
+body {
+    background-image: url(https://images5.alphacoders.com/602/602575.png);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 a {
@@ -22,6 +28,7 @@ button {
     background: #4482ff;
     color: #ffffff;
     border-radius: 5px;
+    font-size: 13px
 }
   
 button:hover {
@@ -38,7 +45,7 @@ button.btn-icon{
     padding: 0px;
 }
 
-input {
+.input-wrapper input {
     width: 100%;
     height: 38px;
     border: 1px solid #e9e9e9;
@@ -112,4 +119,173 @@ input {
     width: 500px;
     padding: 70px 50px;
 }
+
+/* chat page */
+.add-conversation-box{
+    background-color: #eee;
+    display: block;
+    height: 102px;
+}
+
+.add-conversation-box .wrong-email{
+    padding-left: 15%;
+    color: red;
+}
+
+.add-conversation-box .text{
+    padding-left: 106px;
+    padding-top: 5px;
+    background-color: #b1bbc3;
+}
+
+.add-conversation{
+    padding: 10px 15px;
+}
+
+.add-conversation input{
+    width: 85%;
+    margin: 0px 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: none;
+}
+
+.add-conversation i{
+    transition: .1s;
+}
+
+.add-conversation i:hover{
+    cursor: pointer;
+    color: #007bff;
+}
+
+.container{
+    margin: 60px auto;
+    padding: 0px;
+    background: white;
+    border-radius: 7px;
+    height: 70%;
+}
+
+.chat-bubble span{
+    display: inline-block;
+    padding: 10px 14px;
+    background: #eee;
+    margin: 0px 15px;
+    border-radius: 9px;
+    position: relative;
+    word-break: break-word;
+}
+
+.chat-panel{
+    height: 544px;
+    overflow-y: scroll;
+}
+
+.chat-panel .row{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.chat-box-tray{
+    background: #eee;
+    display: flex;
+    align-items: baseline;
+    padding: 10px 15px;
+}
+
+.chat-box-tray input{
+    width: 85%;
+    margin: 0 10px;
+    padding: 10px 15px;
+    border-radius: 30px;
+    border: none;
+}
+
+.chat-box-tray i{
+    size: 25px;
+    transition: .1s;
+}
+
+.chat-box-tray button{
+    background: none;
+    border: none;
+    color: black;
+    width: 30px;
+    height: 30px;
+    padding: 0px;
+}
+
+button:disabled{
+    color: black;
+}
+
+.chat-box-tray i:hover{
+    cursor: pointer;
+    color: #007bff;
+}
+
+.friend-tag{
+    transition: .3s;
+    padding: 15px;
+}
+
+.friend-tag:hover{
+    background-color: #61a3e6;
+    cursor: pointer;
+}
+
+.list-conversation{
+    height: 464px;
+    overflow-y: scroll;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.setting-tray {
+    background-color: #e4e7ea;
+    padding: 10px 15px;
+    border-radius: 7px;
+}
+
+.setting-tray i {
+    width: 20px; 
+    height:20px; 
+    transition: .3s;
+    margin-top: 7px;
+}
+
+.setting-tray i:hover {
+    cursor: pointer;
+    color: #88b6e4;
+}
+
+.search-box {
+    margin: 0px;
+    padding: 7px 0px;
+    background-color: #f3f3f3;
+    border-radius: 7px;
+}
+
+.input-wrapper-chat {
+    margin: 0px 15px;
+    padding: 2px 10px;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.input-wrapper-chat input{
+    border: none;
+    width: 86%;
+}
+
+.input-wrapper-chat input:focus{
+    outline: none;
+}
+
+
 

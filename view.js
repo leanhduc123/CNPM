@@ -80,6 +80,34 @@ view.showComponent = function(name) {
             
             break
         }
+
+        case 'chat': {
+            let app = document.getElementById('app')
+            app.innerHTML = component.chat 
+            controller.loadConversation()
+
+            let signOut = document.getElementById('btn-sign-out')
+            signOut.onclick = signOutHandler
+
+            let formChat = document.getElementById("chat-box-tray")
+            formChat.onsubmit = formChatSubmitHandler
+
+            function signOutHandler() {
+                firebase.auth().signOut()
+            }
+
+            function formChatSubmitHandler(e) {
+                e.preventDefault()
+                document.getElementById("form-chat-btn").setAttribute("disabled", true)
+
+                let messageContent = formChat.message.value.trim()
+                if (messageContent) {
+                    controller.addMessage(messageContent)
+                }
+            }
+
+            break
+        }
     }
 }
 
@@ -94,6 +122,59 @@ view.validate = function (condition, idErrortag, messageError) {
     } else {
         view.setText(idErrortag, messageError)
         return false
+    }
+}
+
+view.showCurrentConversation = function () {
+    if (model.currentConversation) {
+        //hien thi cac tin nhan
+        // let messages = ["hello1","hello2","hello3"]
+        let messages = model.currentConversation.messages
+        let listMessage = document.getElementById("chat-panel")
+        let currentEmail = firebase.auth().currentUser.email
+        listMessage.innerHTML = ""
+
+
+        for (let message of messages) {
+            let className = ""
+            let position = ""
+            if (message.owner == currentEmail) {
+                className = "chat-bubble--right"
+                position = " offset-md-9"
+            } else {
+                className = "chat-bubble--left"
+                position = ""
+            }
+            let html = `
+            <div class="row no-gutters">
+                <div class="col-md-3${position}">
+                    <div class="chat-bubble ${className}">
+                    <span>${message.content}</span>
+                    </div>
+                </div>
+            </div>
+        `
+
+            listMessage.innerHTML += html
+        }
+
+        listMessage.scrollTop = listMessage.scrollHeight
+
+        //show detail info
+        // let users = model.currentConversation.user
+        // let createdAt = model.currentConversation.createdAt
+        // let listUsers = document.getElementById("list-users")
+        // let createdAtDiv = document.getElementById("created-at")
+        // listUsers.innerHTML = ""
+
+        // for(let user of users){
+        //     let html = `
+        //     <div>${user}</div>
+        //     `
+        //     listUsers.innerHTML += html
+        // }
+        // console.log(createdAt)
+        // createdAtDiv.innerHTML = new Date(createdAt).toLocaleString()
     }
 }
 
