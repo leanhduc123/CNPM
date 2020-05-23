@@ -83,25 +83,22 @@ component.chat =`
                             </div>
                         </div>
                         <div id="list-conversation" class="list-conversation">
-                            <div class="friend-tag">
-                                <img class="profile-image" src="https://www.asiatripdeals.com/wp-content/uploads/2019/03/Anonymous-Avatar.png" alt="Profile image">
-                                <h8>Nguyenhoangkien@gmail.com</h8>
-                                <span class="time small">13:21</span>
-                            </div>
                         </div>
-                        <div class="add-conversation-box">
+                        <form id="add-conversation-box" class="add-conversation-box">
                             <div class="text">Add conversation</div>
                             <div class="add-conversation">
-                                <i class="fas fa-plus-square fa-lg"></i>
-                                <input type="text" placeholder="Email">
+                                <button type="submit" class="btn-icon">
+                                  <i class="fas fa-plus-square fa-lg"></i>
+                                </button>
+                                <input id="friend-email-input" type="email" name="friendEmail" placeholder="Email">
                             </div>
-                            <div class="wrong-email"></div>
-                        </div>
+                            <div id="wrong-email" class="wrong-email"></div>
+                        </form>
                     </div>
                     <div class="col-md-8">
                         <div class="setting-tray no-gutters">
                             <img class="profile-image" src="https://www.asiatripdeals.com/wp-content/uploads/2019/03/Anonymous-Avatar.png" alt="Profile image">
-                            <span class="user-email">Leeanhducc@gmail.com</span>
+                            <span id="name-title" class="user-email"></span>
                         </div>
                         <div id="chat-panel" class="chat-panel">
                         </div>

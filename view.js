@@ -85,12 +85,16 @@ view.showComponent = function(name) {
             let app = document.getElementById('app')
             app.innerHTML = component.chat 
             controller.loadConversation()
+            controller.setupOnSnapShot()
 
             let signOut = document.getElementById('btn-sign-out')
             signOut.onclick = signOutHandler
 
             let formChat = document.getElementById("chat-box-tray")
             formChat.onsubmit = formChatSubmitHandler
+
+            let formAddConversation = document.getElementById("add-conversation-box")
+            formAddConversation.onsubmit = formAddSubmitHandler
 
             function signOutHandler() {
                 firebase.auth().signOut()
@@ -103,6 +107,18 @@ view.showComponent = function(name) {
                 let messageContent = formChat.message.value.trim()
                 if (messageContent) {
                     controller.addMessage(messageContent)
+                }
+            }
+
+            function formAddSubmitHandler(e) {
+                e.preventDefault()
+                let friendEmail = formAddConversation.friendEmail.value
+                let validateResult = view.validate(friendEmail && friendEmail != firebase.auth().currentUser.email,
+                                     "wrong-email",
+                                     "Invalid friend email!"
+                                    )
+                if(validateResult){
+                    controller.addConversation(friendEmail)
                 }
             }
 
@@ -175,6 +191,55 @@ view.showCurrentConversation = function () {
         // }
         // console.log(createdAt)
         // createdAtDiv.innerHTML = new Date(createdAt).toLocaleString()
+    }
+}
+
+view.showListConversation = function () {
+    if (model.conversations) {
+        //TODO: show all conversation in model.conversation t div id="list-conversation"
+        let conversations = model.conversations
+        let listConversation = document.getElementById("list-conversation")
+        listConversation.innerHTML = ""
+        let nameTitle = document.getElementById(`name-title`)
+
+        for (let conversation of conversations) {
+            let id = conversation.id
+            let index = conversation.user.findIndex(function(element){
+                return element != firebase.auth().currentUser.email
+            })
+            let title = conversation.user[index]
+            let className = ""
+            // if (model.currentConversation && model.currentConversation.id == conversation.id) {
+            //     className = "conversation current"
+            // } else {
+            //     className = "conversation"
+            // }
+
+            let html = `
+                <div id="conversation-${id}" class="friend-tag">
+                    <img class="profile-image" src="https://www.asiatripdeals.com/wp-content/uploads/2019/03/Anonymous-Avatar.png" alt="Profile image">
+                    <h8 id="title-${id}">${title}</h8>
+                    <span class="time small">13:21</span>
+                </div>
+            `
+
+            listConversation.innerHTML += html
+        }
+
+        for (let conversation of conversations) {
+            let id = conversation.id
+            let conversationDiv = document.getElementById("conversation-" + id)
+
+            conversationDiv.onclick = onClickHandler
+
+            function onClickHandler() {
+                let innertext =  document.getElementById(`title-${id}`).innerHTML
+                nameTitle.innerHTML = innertext
+                model.saveCurrentConversation(conversation)
+                view.showCurrentConversation()
+                view.showListConversation()
+            }
+        }
     }
 }
 
